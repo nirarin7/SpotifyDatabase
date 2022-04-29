@@ -1,0 +1,1 @@
+web: gunicorn SpotifyStats.wsgi --preload
