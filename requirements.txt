@@ -1,3 +1,5 @@
 django
 gunicorn
 django-heroku
+django-livereload-server
+django_extensions

@@ -20,9 +20,8 @@ def run():
         count = 0
         for row in reader:
             try:
-                # genre, _ = Genre.objects.get_or_create(genre_type=row[6])
-                # country, _ = Country.objects.get_or_create(country=row[0])
-                #
+                genre, _ = Genre.objects.get_or_create(genre_type=row[6])
+                country, _ = Country.objects.get_or_create(country=row[0])
                 if row[7] == '':
                     followers = 0
                 else:
@@ -30,12 +29,11 @@ def run():
 
                 artist, _ = Artist.objects.get_or_create(artist=row[4], followers=followers)
 
-                # album, _ = Album.objects.get_or_create(
-                #     artist=artist,
-                #     name=row[9],
-                #     tracks_in_album=int(row[12])
-                # )
-                tracks_in_album=int(row[12])
+                album, _ = Album.objects.get_or_create(
+                    artist=artist,
+                    name=row[9],
+                    tracks_in_album=int(row[12])
+                )
 
                 try:
                     release_date = datetime.strptime(row[10], date_format)
@@ -45,47 +43,33 @@ def run():
                     except ValueError:
                         release_date = datetime.today()
 
-                # track, _ = Track.objects.get_or_create(
-                #     uri=row[1],
-                #     title=row[3],
-                #     release_date=release_date,
-                #     danceability=float(row[13]),
-                #     energy=float(row[14]),
-                #     key=int(row[15]),
-                #     loudness=float(row[16]),
-                #     mode=bool(row[17]),
-                #     speechiness=float(row[18]),
-                #     acoustics=float(row[19]),
-                #     instrumentalness=float(row[20]),
-                #     liveness=float(row[21]),
-                #     valence=float(row[22]),
-                #     tempo=float(row[23]),
-                #     duration=int(row[24]),
-                #     track_number_album=int(row[11]),
-                #     album=album,
-                #     genre=genre,
-                # )
-                #
-                danceability = float(row[13]),
-                energy = float(row[14]),
-                key = int(row[15]),
-                loudness = float(row[16]),
-                mode = bool(row[17]),
-                speechiness = float(row[18]),
-                acoustics = float(row[19]),
-                instrumentalness = float(row[20]),
-                liveness = float(row[21]),
-                valence = float(row[22]),
-                tempo = float(row[23]),
-                duration = int(row[24]),
-                track_number_album = int(row[11]),
-                # popularity, _ = Popularity.objects.get_or_create(
-                #     country=country,
-                #     track=track,
-                #     popularity=float(row[2])
-                # )
-                popularity = float(row[2])
+                track, _ = Track.objects.get_or_create(
+                    uri=row[1],
+                    title=row[3],
+                    release_date=release_date,
+                    danceability=float(row[13]),
+                    energy=float(row[14]),
+                    key=int(row[15]),
+                    loudness=float(row[16]),
+                    mode=bool(row[17]),
+                    speechiness=float(row[18]),
+                    acoustics=float(row[19]),
+                    instrumentalness=float(row[20]),
+                    liveness=float(row[21]),
+                    valence=float(row[22]),
+                    tempo=float(row[23]),
+                    duration=int(row[24]),
+                    track_number_album=int(row[11]),
+                    album=album,
+                    genre=genre,
+                )
+
+                popularity, _ = Popularity.objects.get_or_create(
+                    country=country,
+                    track=track,
+                    popularity=float(row[2])
+                )
             except Exception:
-                print("failed")
+                print(f"failed on row: {count}")
 
     print("Number of rows imported: " + str(count))
