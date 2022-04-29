@@ -71,5 +71,6 @@ def run():
                 )
             except Exception:
                 print(f"failed on row: {count}")
+            count += 1
 
     print("Number of rows imported: " + str(count))
