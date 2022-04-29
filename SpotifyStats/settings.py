@@ -89,6 +89,16 @@ DATABASES = {
         "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server",
         },
     }
+    # 'default': {
+    #     "ENGINE": "mssql",
+    #     "NAME": "SpotifyStats",
+    #     "USER": "sa",
+    #     "PASSWORD": "Password12345!",
+    #     "HOST": "localhost",
+    #     "PORT": "1433",
+    #     "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", },
+    # }
+
 }
 
 
