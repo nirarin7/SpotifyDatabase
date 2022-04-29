@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="card mb-3 bg-dark">
+        <div class="card-body">
+            <form class="row gy-2 gx-3 align-items-center ">
+                <div class="col-auto">
+                    <label class="visually-hidden" for="artist">Artist</label>
+                    <input type="text" class="form-control" id="artist" placeholder="Artist">
+                </div>
+                <div class="col-auto">
+                    <label class="visually-hidden" for="songTitle">Song Title</label>
+                    <input type="text" class="form-control" id="songTitle" placeholder="Song Title">
+                </div>
+                <div class="col-auto">
+                    <label class="visually-hidden" for="album">Album</label>
+                    <input type="text" class="form-control" id="album" placeholder="Album">
+                </div>
+                <div class="col-auto">
+                    <label class="visually-hidden" for="autoSizingSelect">Country</label>
+                    <select class="form-select" id="autoSizingSelect">
+                        <option selected>Country</option>
+                        <option value="1">Belgium</option>
+                        <option value="2">Philippines</option>
+                        <option value="3">Singapore</option>
+                        <option value="4">United States</option>
+                        <option value="5">Global</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <label class="visually-hidden" for="genre">Genre</label>
+                    <select class="form-select" id="genre">
+                        <option selected>Genre</option>
+                        <option value="1">Pop</option>
+                        <option value="2">Hip Hop</option>
+                        <option value="3">Country</option>
+                        <option value="4">Metal</option>
+                        <option value="5">Rock</option>
+                    </select>
+                </div>
+<!--                <div class="col-auto">-->
+<!--                </div>-->
+                <div class="col-auto">
+                    <button id="search" type="submit" class="btn btn-primary">
+                        <i class="bi-search"></i>
+                        &nbsp; Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="table">
+    {% include 'tables/top_songs_table.html' %}
+</div>
+<script>
+    $('#table').hide();
+    $('#search').click(function(ele) {
+        $('#table').show();
+     });
+</script>

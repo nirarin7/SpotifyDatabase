@@ -1,0 +1,33 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+<div class="container d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="card">
+        <div class="container-xl">
+            <div class="row">
+                <form action="{% url 'sign_in' %}" method="post">
+                    {% csrf_token %}
+                    <h1 class="display-1 text-center">Log in</h1>
+
+                    <p class="h6 text-center">Sign in to start exploring the music dataset</p>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="emailAddress" placeholder="Email">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <div class="d-grid gap-2 mb-2">
+                        <button type="submit" class="btn btn-primary" style="width:100%">Sign In</button>
+                    </div>
+
+                </form>
+                    <div class="d-grid gap-2 mb-2">
+                        <a href="{% url 'create_account_page' %}" class="btn btn-primary" style="width:100%">Create An Account</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
