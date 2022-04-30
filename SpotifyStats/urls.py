@@ -20,9 +20,9 @@ from WebApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', views.login, name='login'),
+    path('login/', views.log_in, name='log_in'),
     path('login/sign_in', views.sign_in, name='sign_in'),
-    path('login/sign_out', views.sing_out, name='sign_out'),
+    path('login/sign_out', views.sign_out, name='sign_out'),
     path('login/create_account_page', views.create_account_page, name='create_account_page'),
     path('login/create_account', views.create_account, name='create_account'),
     path('', views.index, name='index'),

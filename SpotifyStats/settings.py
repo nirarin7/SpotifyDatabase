@@ -12,11 +12,18 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 import django_heroku
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
+MESSAGE_TAGS = {
+    messages.DEBUG: 'secondary',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
+}
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -28,7 +35,6 @@ SECRET_KEY = 'django-insecure-@0tu&$mt89t#!vg=xao-=zg2$8*b%=s$c4z%jts%gph1)embrj
 DEBUG = True
 
 ALLOWED_HOSTS = ['mighty-scrubland-10596.herokuapp.com', 'localhost', '127.0.0.1']
-
 
 # Application definition
 
@@ -61,7 +67,7 @@ ROOT_URLCONF = 'SpotifyStats.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'Templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'Templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,33 +82,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SpotifyStats.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        "ENGINE": "mssql",
-        "NAME": "SpotifyStatus",
-        "USER": "u4gdmz5i4nbxpo",
-        "PASSWORD": "sedtqqkV0UuDPZ7?tYyN2GGQl!",
-        "HOST": "eu-az-sql-serv1.database.windows.net",
-        "PORT": "1433",
-        "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server",
-        },
-    }
     # 'default': {
     #     "ENGINE": "mssql",
-    #     "NAME": "SpotifyStats",
-    #     "USER": "sa",
-    #     "PASSWORD": "Password12345!",
-    #     "HOST": "localhost",
+    #     "NAME": "SpotifyStatus",
+    #     "USER": "u4gdmz5i4nbxpo",
+    #     "PASSWORD": "sedtqqkV0UuDPZ7?tYyN2GGQl!",
+    #     "HOST": "eu-az-sql-serv1.database.windows.net",
     #     "PORT": "1433",
-    #     "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", },
+    #     "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server",
+    #     },
     # }
+    'default': {
+        "ENGINE": "mssql",
+        "NAME": "SpotifyStats",
+        "USER": "sa",
+        "PASSWORD": "Password12345!",
+        "HOST": "localhost",
+        "PORT": "1433",
+        "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", },
+    }
 
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -122,7 +126,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -133,7 +136,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/

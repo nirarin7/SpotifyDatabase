@@ -12,14 +12,42 @@
     <link href="{% static 'css/bootstrap.quartz.min.css' %}" rel="stylesheet">
     <!--    <link href="{% static 'css/bootstrap.slate.min.css' %}" rel="stylesheet">-->
     <!--    <link href="{% static 'css/bootstrap.vapor.min.css' %}" rel="stylesheet">-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <title>Spotify Stats</title>
+    <style>
+        .alert-fixed {
+            position:fixed;
+            z-index:9999;
+            width: 75%;
+        }
+
+
+    </style>
 </head>
 <body>
+
+{% for message in messages %}
+<div class="container">
+    <div class="row">
+        <div class="mt-2 alert alert-fixed alert-{{ message.tags }} alert-dismissible fade show text-center"
+             role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
 {% block content %}
 {% endblock %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+<script>
+    $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+        $(".alert").slideUp(500);
+    });
+</script>
 </body>
 </html>
