@@ -10,12 +10,12 @@ def run():
         reader = csv.reader(file)
         next(reader)
 
-        Album.objects.all().delete()
-        Artist.objects.all().delete()
-        Track.objects.all().delete()
-        Country.objects.all().delete()
-        Popularity.objects.all().delete()
-        Genre.objects.all().delete()
+        # Album.objects.all().delete()
+        # Artist.objects.all().delete()
+        # Track.objects.all().delete()
+        # Country.objects.all().delete()
+        # Popularity.objects.all().delete()
+        # Genre.objects.all().delete()
 
         count = 0
         for row in reader:
