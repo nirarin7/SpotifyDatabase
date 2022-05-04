@@ -86,25 +86,25 @@ WSGI_APPLICATION = 'SpotifyStats.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     "ENGINE": "mssql",
-    #     "NAME": "SpotifyStatus",
-    #     "USER": "u4gdmz5i4nbxpo",
-    #     "PASSWORD": "sedtqqkV0UuDPZ7?tYyN2GGQl!",
-    #     "HOST": "eu-az-sql-serv1.database.windows.net",
-    #     "PORT": "1433",
-    #     "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server",
-    #     },
-    # }
     'default': {
         "ENGINE": "mssql",
-        "NAME": "SpotifyStats",
-        "USER": "sa",
-        "PASSWORD": "Password12345!",
-        "HOST": "localhost",
+        "NAME": "SpotifyStatus",
+        "USER": "u4gdmz5i4nbxpo",
+        "PASSWORD": "sedtqqkV0UuDPZ7?tYyN2GGQl!",
+        "HOST": "eu-az-sql-serv1.database.windows.net",
         "PORT": "1433",
-        "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", },
+        "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server",
+        },
     }
+    # 'default': {
+    #     "ENGINE": "mssql",
+    #     "NAME": "SpotifyStats",
+    #     "USER": "sa",
+    #     "PASSWORD": "Password12345!",
+    #     "HOST": "localhost",
+    #     "PORT": "1433",
+    #     "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", },
+    # }
 
 }
 

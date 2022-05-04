@@ -25,5 +25,10 @@ urlpatterns = [
     path('login/sign_out', views.sign_out, name='sign_out'),
     path('login/create_account_page', views.create_account_page, name='create_account_page'),
     path('login/create_account', views.create_account, name='create_account'),
+    path('get_top_by_country', views.get_top_by_country, name='get_top_by_country'),
+    path('get_top_genre_by_country', views.get_top_genre_by_country, name='get_top_genre_by_country'),
+    path('get_top_artist_by_country', views.get_top_artist_by_country, name='get_top_artist_by_country'),
+    path('get_most_danceable_songs', views.get_most_danceable_songs, name='get_most_danceable_songs'),
+
     path('', views.index, name='index'),
 ]
