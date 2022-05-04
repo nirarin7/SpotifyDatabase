@@ -1,0 +1,64 @@
+{% extends 'shared/base_sidebar.html' %}
+
+{% block side %}
+
+<h1 class="text-center mb-3">Top 50 Artist By Country</h1>
+<div class="container">
+    <div class="card mb-2 bg-dark">
+        <div class="card-body">
+            <form action="{% url 'get_top_artist_by_country' %}" class="row align-items-center justify-content-left" method="POST">
+                {% csrf_token %}
+                <div class="col-auto">
+                    <label for="country">Country</label>
+                    <select class="form-select" id="country" name="country">
+                        {% for country in countries %}
+                        <option value="{{country.country_id}}" {% if country.country_id == current_country %}selected="selected"{% endif %}>
+                            {{country.country}}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <label for="count">Max</label>
+                    <select class="form-select" id="count" name="count">
+                        {% for count in counts %}
+                        <option value="{{count.value}}" {% if count.value == current_count %} selected="selected" {% endif %}>
+                            {{count.value}}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button id="search" type="submit" class="btn btn-primary">
+                        <i class="bi-search"></i>
+                        &nbsp; Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container bg-info">
+    <div class="table-responsive" style="height: 70vh">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Country</th>
+                <th scope="col">Artist</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ row.country }}</td>
+                <td>{{ row.artist }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
